@@ -1,6 +1,9 @@
 //Global Variables
+    //Readout Area
 var readOut = document.querySelector('#readout')
+    //Digit Buttons
 var digits = document.querySelectorAll('.digit')
+    //Operator Buttons
 var operators = document.querySelectorAll('.operator')
 
 //Functions
@@ -10,7 +13,7 @@ var operators = document.querySelectorAll('.operator')
 //Event Listeners
 
 //forEach(function(pass in a button))
-   
+   //Digit Actions
 digits.forEach(function(btn){
      //add an Event Listener for clicks
     btn.addEventListener('click', function(){
@@ -19,6 +22,8 @@ digits.forEach(function(btn){
         readout.innerText += this.innerText
     })
 })
+
+    //Operator Actions
 operators.forEach(function(btn){
     //add an Event Listener for clicks
     btn.addEventListener('click', function(){
