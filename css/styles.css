@@ -1,5 +1,5 @@
 #calculator{
-    width: 500px;
+    width: 300px;
     height: 500px;
     border: 5px solid #444444;
 }
@@ -7,3 +7,26 @@
     height: 50px;
     border: 3px solid #999999;
 }
+
+button {
+    display: inline-block;
+    width: 97px;
+    height: 50px;
+}
+
+.digit{
+    background: #00b2ee;
+
+}
+ .operator{
+     background: #8ee5ee;
+
+ } 
+
+ #equals{
+    background: #76eec6
+ }
+
+ #clear{
+
+ }
