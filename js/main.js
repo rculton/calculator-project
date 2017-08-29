@@ -5,10 +5,9 @@ var readOut = document.querySelector('#readout')
 var digits = document.querySelectorAll('.digit')
     //Operator Buttons
 var operators = document.querySelectorAll('.operator')
-
+    //Equals Button
+var equalsBtn = document.querySelector('#equals')
 //Functions
-
-
 
 //Event Listeners
 
@@ -30,4 +29,9 @@ operators.forEach(function(btn){
         //concatenate the text
         readout.innerText += this.innerText
     })
+})
+    //Equals Button Action
+equalsBtn.addEventListener('click', function(){
+    console.log(readout.innerText)
+    readout.innerText = eval(readout.innerText)
 })
