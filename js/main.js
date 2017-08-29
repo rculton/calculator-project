@@ -1,6 +1,7 @@
 //Global Variables
 var readOut = document.querySelector('#readout')
 var digits = document.querySelectorAll('.digit')
+var operators = document.querySelectorAll('.operator')
 
 //Functions
 
@@ -14,7 +15,14 @@ digits.forEach(function(btn){
      //add an Event Listener for clicks
     btn.addEventListener('click', function(){
         //"this" is the button being clicked...
-        console.log(this.innerText)
+        //concatenate the text
+        readout.innerText += this.innerText
+    })
+})
+operators.forEach(function(btn){
+    //add an Event Listener for clicks
+    btn.addEventListener('click', function(){
+        //concatenate the text
         readout.innerText += this.innerText
     })
 })
