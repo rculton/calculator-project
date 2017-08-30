@@ -10,9 +10,12 @@ var equalsBtn = document.querySelector('#equals')
     //Clear Button
 var clearBtn = document.querySelector('#clear')
     //Operator Storage
-var opStorage = ''
+var opStorage = []
     //Number Storage
 var numStorage= []
+var evalStorage= 0
+    //Readout Storage
+var readoutStorage= ''
 
 //Functions
 
@@ -42,6 +45,10 @@ digits.forEach(function(btn){
     btn.addEventListener('click', function(){
         //"this" is the button being clicked...
         //concatenate the text
+        if (numStorage.length === 0)
+            {
+                readout.innerText = ''
+            }
         readout.innerText += this.innerText
     })
 })
@@ -50,20 +57,41 @@ digits.forEach(function(btn){
 operators.forEach(function(btn){
     //add an Event Listener for clicks
     btn.addEventListener('click', function(){
-        //concatenate the text
+        //de-concatenate the text for a number
+        numStorage.push(parseInt(readout.innerText.replace(readoutStorage, '')))
+        console.log(numStorage)
+        //concatenate the text for an output
         readout.innerText += this.innerText
-        opStorage = this.innerText
+        readoutStorage = readout.innerText
+        opStorage.push(this.innerText)
+        console.log(opStorage)
     })
 })
     //Equals Button Action
 equalsBtn.addEventListener('click', function(){
-    numStorage = readout.innerText.split(opStorage)
-    readout.innerText = evaluate(opStorage,parseInt(numStorage[0]),parseInt(numStorage[1]))
+    var opStorageCount = opStorage.length
+    numStorage.push(parseInt(readout.innerText.replace(readoutStorage, '')))
+    for (var i = 0; i<opStorageCount; i++){
+        //use opStorage[0] on numStorage[0] and numStorage[1]
+        evalStorage = evaluate(opStorage[0],numStorage[0],numStorage[1])
+
+        numStorage.splice(0,1)
+        numStorage[0] = evalStorage
+        console.log(numStorage)
+
+        opStorage.splice(0,1)
+        console.log(opStorage)
+
+     readout.innerText = numStorage[0]
+  
+
+    }
     numStorage = []
 })
 
     //Clear Button Action
 clearBtn.addEventListener('click', function(){
     numStorage = []
+    opStorage = []
     readout.innerText = ''
 })
