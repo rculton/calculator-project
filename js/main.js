@@ -63,7 +63,7 @@ operators.forEach(function(btn){
     //add an Event Listener for clicks
     btn.addEventListener('click', function(){
         //de-concatenate the text for a number
-        numStorage.push(parseInt(readout.innerText.replace(readoutStorage, '')))
+        numStorage.push(Number(readout.innerText.replace(readoutStorage, '')))
         console.log(numStorage)
         //concatenate the text for an output
         readout.innerText += this.innerText
@@ -101,4 +101,6 @@ clearBtn.addEventListener('click', function(){
     numStorage = []
     opStorage = []
     readout.innerText = ''
+    readoutStorage = ''
+    finishedOp = true
 })
