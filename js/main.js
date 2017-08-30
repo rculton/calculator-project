@@ -17,6 +17,10 @@ var evalStorage= 0
     //Readout Storage
 var readoutStorage= ''
 
+    //Operation Finished boolean
+
+var finishedOp = false
+
 //Functions
 
     //Calculation Function
@@ -45,11 +49,12 @@ digits.forEach(function(btn){
     btn.addEventListener('click', function(){
         //"this" is the button being clicked...
         //concatenate the text
-        if (numStorage.length === 0)
+        if (finishedOp)
             {
                 readout.innerText = ''
             }
         readout.innerText += this.innerText
+        finishedOp = false
     })
 })
 
@@ -65,6 +70,7 @@ operators.forEach(function(btn){
         readoutStorage = readout.innerText
         opStorage.push(this.innerText)
         console.log(opStorage)
+        finishedOp = false
     })
 })
     //Equals Button Action
@@ -87,6 +93,7 @@ equalsBtn.addEventListener('click', function(){
 
     }
     numStorage = []
+    finishedOp = true
 })
 
     //Clear Button Action
